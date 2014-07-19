@@ -4,8 +4,8 @@ import networkx as nx
 import matplotlib.pyplot as plt
 
 G = nx.Graph()
-ctbcClientsN = 100
-nonCtbcClientsN = 50
+ctbcClientsN = 100000
+nonCtbcClientsN = 50000
 f = open('input.txt', 'w')
 
 ctbcN = 100
@@ -55,5 +55,5 @@ for i in range(nonCtbcClientsN):
         G.add_node(ctbcContact, color='blue')
         G.add_edge(nonCtbcNumber, ctbcContact)
 
-nx.draw(G, nx.spring_layout(G,iterations=100), node_size=80, with_labels=False)
+#nx.draw(G, nx.spring_layout(G,iterations=100), node_size=80, with_labels=False)
 plt.show()
