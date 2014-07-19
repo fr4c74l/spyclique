@@ -42,14 +42,3 @@ def load_cdr(cdr_filename):
     for (key, e) in edges.items():
         graph.add_edge(*key, attr_dict={'w': e.w})
     return graph
-
-def main(cdr_filename):
-    cdr = load_cdr(cdr_filename)
-    print(list(nx.find_cliques(cdr)))
-
-if __name__ == '__main__':
-    import sys
-    if len(sys.argv) != 2:
-        print('Error: missing parameter CDR file')
-    else:
-        main(sys.argv[1])
