@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 from random import randrange as rr
 import networkx as nx
 import matplotlib.pyplot as plt
