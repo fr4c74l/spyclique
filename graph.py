@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import re
 
 DUR_FACTOR = 1/300.0
@@ -24,7 +25,6 @@ def load_cdr(cdr_filename):
 
     for line in cdr_file:
         match = parser.match(line)
-        print(match.group(0))
         row = [int(match.group(i)) for i in [1,2,3]]
 
         key = tuple(row[:2])
