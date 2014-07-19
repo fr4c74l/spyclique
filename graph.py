@@ -1,3 +1,5 @@
+import re
+
 DUR_FACTOR = 1/300.0
 
 class Edge:
@@ -22,9 +24,10 @@ def load_cdr(cdr_filename):
 
     for line in cdr_file:
         match = parser.match(line)
-        row = (int(match.groups(i)) for i in [1,2,3])
+        print(match.group(0))
+        row = [int(match.group(i)) for i in [1,2,3]]
 
-        key = row[:1]
+        key = tuple(row[:2])
         dur = row[2]
 
         try:
@@ -38,13 +41,13 @@ def load_cdr(cdr_filename):
     for (key, e) in edges.items():
         for vert in key:
             try:
-                graph[vert].append(a)
+                graph[vert].append(e)
             except KeyError:
-                graph[vert] = [a]
+                graph[vert] = [e]
     return graph
 
 def main(cdr_filename):
-    cdr = load_graph(cdr_filename)
+    cdr = load_cdr(cdr_filename)
 
 if __name__ == '__main__':
     import sys
