@@ -8,7 +8,7 @@ ctbcClientsN = 100
 nonCtbcClientsN = 50
 f = open('input.txt', 'w')
 
-ctbcN = 1000
+ctbcN = 100
 nonCtbcN = 100
 ncont = 10
 callsPerN = 50

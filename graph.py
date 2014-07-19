@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+import networkx as nx
 import re
 
 DUR_FACTOR = 1/300.0
@@ -37,21 +38,7 @@ def load_cdr(cdr_filename):
             edges[key] = e
         e.w += 1 + DUR_FACTOR * dur
 
-    graph = {}
+    graph = nx.Graph()
     for (key, e) in edges.items():
-        for vert in key:
-            try:
-                graph[vert].append(e)
-            except KeyError:
-                graph[vert] = [e]
+        graph.add_edge(*key, attr_dict={'w': e.w})
     return graph
-
-def main(cdr_filename):
-    cdr = load_cdr(cdr_filename)
-
-if __name__ == '__main__':
-    import sys
-    if len(sys.argv) != 2:
-        print('Error: missing parameter CDR file')
-    else:
-        main(sys.argv[1])
