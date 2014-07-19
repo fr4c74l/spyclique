@@ -18,11 +18,11 @@ class Edge:
     def is_same_op(self):
         return str(self.orig)[0] == str(self.dest)[0]
 
-edges = {}
-
 def load_cdr(cdr_filename):
     cdr_file = open(cdr_filename, 'r')
     parser = re.compile('(\d*) +(\d*) +(\d*)')
+
+    edges = {}
 
     for line in cdr_file:
         match = parser.match(line)
@@ -43,11 +43,10 @@ def load_cdr(cdr_filename):
     for key in edges.keys():
         #TODO: filter low w edges
         graph.add_edge(*key)
-    return graph
+    return graph, edges
 
-def main(cdr_filename):
-    cdr = load_cdr(cdr_filename)
-    for clique in nx.find_cliques(cdr):
+def show_savings(cliques, edges):
+    for clique in cliques:
         if len(clique) < 4:
             continue
         costs = {}
@@ -82,10 +81,3 @@ def main(cdr_filename):
             savings += dif
         print(' * Economia total: %.2f' % savings)
         c = input('C:\>')
-
-if __name__ == '__main__':
-    import sys
-    if len(sys.argv) != 2:
-        print('Error: missing parameter CDR file')
-    else:
-        main(sys.argv[1])
