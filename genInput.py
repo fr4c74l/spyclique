@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python
 from random import randrange as rr
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -54,6 +54,7 @@ for i in range(nonCtbcClientsN):
         data = '{} {} {}\n'.format(nonCtbcNumber, ctbcContact, rr(1, 300))
         G.add_node(ctbcContact, color='blue')
         G.add_edge(nonCtbcNumber, ctbcContact)
+        f.write(data)
 
 nx.draw(G, nx.spring_layout(G,iterations=100), node_size=80, with_labels=False)
 plt.show()
