@@ -3,7 +3,7 @@ import networkx as nx
 
 def main(cdr_filename):
     cdr = graph.load_cdr(cdr_filename)
-    print(list(nx.find_cliques(cdr)))i
+    print(list(nx.find_cliques(cdr)))
 
 if __name__ == '__main__':
     import sys
