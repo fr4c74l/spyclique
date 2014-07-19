@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 from random import randrange as rr
 import networkx as nx
 import matplotlib.pyplot as plt
@@ -26,7 +26,7 @@ for i in range(ctbcN):
 
 for i in range(ctbcClientsN):
     ctbcNumber = ctbcNumbers[rr(0, ctbcN)]
-    G.add_node(ctbcNumber, color='blue')
+    G.add_node(ctbcNumber)
     val_map[ctbcNumber] = 'blue'
     ncontacts = rr(1,ncont)
     contacts = []
@@ -64,7 +64,6 @@ for i in range(nonCtbcClientsN):
         f.write(data)
 
 values = [val_map.get(node) for node in G.nodes()]
-
 values_edges = []
 for edge in G.edges():
     if val_map[edge[0]] == 'red' or val_map[edge[1]] == 'red':
