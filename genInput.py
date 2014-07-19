@@ -1,18 +1,18 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 from random import randrange as rr
 import networkx as nx
 import matplotlib.pyplot as plt
 
 G = nx.Graph()
-ctbcClientsN = 100000
-nonCtbcClientsN = 50000
+ctbcClientsN = 10000
+nonCtbcClientsN = 5000
 f = open('input.txt', 'w')
 
-ctbcN = 100
-nonCtbcN = 100
+ctbcN = 1000
+nonCtbcN = 1000
 ncont = 10
 callsPerN = 50
-callCtbcPercentage = 80
+callCtbcPercentage = 50
 ctbcNumbers = []
 nonCtbcNumbers = []
 
